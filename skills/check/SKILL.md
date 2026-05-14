@@ -1,6 +1,6 @@
 ---
 name: check
-description: Check backward compatibility of an API spec against its previously committed version.
+description: Check an OpenAPI specification for backward compatibility and verify the version bump.
 argument-hint: <spec-file>
 ---
 

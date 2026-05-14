@@ -1,6 +1,6 @@
 {
   "name": "api-compatibility",
-  "description": "Check OpenAPI specification backward compatibility and verify the version bump.",
+  "description": "Check an OpenAPI specification for backward compatibility and verify the version bump.",
   "version": "1.0.0",
   "author": {
     "name": "Anton Hrytsenko"
