@@ -5,7 +5,8 @@ A Claude Code plugin that checks OpenAPI specification backward compatibility an
 ## Installation
 
 ```
-/plugin install https://github.com/hrytsenko/claude-api-compatibility
+/plugin marketplace add hrytsenko/claude-api-compatibility
+/plugin install api-compatibility
 ```
 
 ## Usage
@@ -25,7 +26,3 @@ Compares the current spec file against its previously committed version and repo
 The plugin ships with a default policy at `skills/check/resources/API_VERSIONING.md`.
 
 To override it for a specific project, place an `API_VERSIONING.md` file in the project root. The skill will use that file instead of the bundled default.
-
-## License
-
-MIT
