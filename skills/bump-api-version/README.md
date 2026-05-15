@@ -1,8 +1,8 @@
-# api-versioning:bump-api-version
+# Bump API version
 
 This skill automatically bumps `info.version` according to detected changes.
 
-The skill uses the `major.minor` format for `info.version`.
+The skill uses the `major.minor` format for `info.version`. It relies on `/api-versioning:check-api-compatibility` to detect changes, so the same policy applies.
 
 ## Usage
 
@@ -15,7 +15,3 @@ The skill uses the `major.minor` format for `info.version`.
 Versioning rules are defined in `resources/API_VERSIONING.md`.
 
 To override them for a specific project, place an `API_VERSIONING.md` file in the project root.
-
-## Dependencies
-
-Uses `/api-versioning:check-api-compatibility` internally to classify changes, so the same policy applies.
