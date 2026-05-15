@@ -37,18 +37,18 @@ Carefully compare the two spec versions yourself. Identify every difference: add
 
 Do not count changes to `info.version` as a functional API change.
 
-### Step 5 — Report changes
+### Step 5 — Classify changes
 
-Using the policy from Step 1, classify each difference as **breaking** or **non-breaking**.
-
-**Report format:**
+Using the policy from Step 1, classify each difference as **breaking** or **non-breaking** and append a **Compatibility verdict** section:
 
 ```
-## Breaking changes
+## Compatibility verdict
+
+### Breaking changes
 
 <bulleted list, or "None.">
 
-## Non-breaking changes
+### Non-breaking changes
 
 <bulleted list, or "None.">
 ```
