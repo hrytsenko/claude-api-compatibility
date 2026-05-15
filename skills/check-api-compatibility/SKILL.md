@@ -56,7 +56,7 @@ Using the policy from Step 1, classify each difference as **breaking** or **non-
 If there are no differences at all (excluding version):
 
 ```
-No changes detected between the committed version and the current version of `<path>`.
+No changes detected.
 ```
 
 Keep each bullet to one line: name the operation or field, describe what changed, and include the line number in the current spec where the change appears — e.g. `GET /books: added optional isbn query parameter (line 42)`. Be concise and human-readable.
@@ -65,25 +65,21 @@ Keep each bullet to one line: name the operation or field, describe what changed
 
 Extract `info.version` from both the old and new spec. Treat it as a `major.minor` string (e.g. `1.0`, `2.3`).
 
-Determine the **required** bump using the versioning rules from the policy read in Step 1.
+Determine the **required** bump using the versioning rules from the policy read in Step 1. Compute the **expected version** by applying that bump to the old version.
 
 Compare the actual version change to the required one and append a **Version verdict** section:
 
 ```
 ## Version verdict
 
-Old version: <old>
-New version: <new>
-
 <verdict line>
 ```
 
 Verdict lines:
 
-- Correct — no changes, version unchanged: `✓ No changes — version unchanged (<old>).`
-- Correct — non-breaking changes, minor bumped: `✓ Non-breaking changes — minor version correctly updated (<old> → <new>).`
-- Correct — breaking changes, major bumped: `✓ Breaking changes — major version correctly updated (<old> → <new>).`
-- Wrong — changes present but version unchanged: `✗ <Breaking|Non-breaking> changes detected — update the <major|minor> version (<old> is unchanged).`
-- Wrong — breaking changes but only minor bumped: `✗ Breaking changes detected — major version must be updated, not minor (<old> → <new>).`
-- Wrong — no changes but version was bumped: `✗ No changes detected — revert the version bump (<old> → <new>).`
-- Wrong — non-breaking only but major bumped: `✗ Non-breaking changes only — minor version bump is sufficient, major is not required (<old> → <new>).`
+1. No changes, version unchanged: `✓ No changes — version unchanged (<old>).`
+2. Breaking changes, major bumped: `✓ Breaking changes — major version correctly updated (<old> → <new>).`
+3. Non-breaking changes, minor bumped: `✓ Non-breaking changes — minor version correctly updated (<old> → <new>).`
+4. No changes, incorrect version: `✗ No changes detected — expected <old> (unchanged), not <new>.`
+5. Breaking present, incorrect version: `✗ Breaking changes detected — expected <expected>, not <new>.`
+6. Non-breaking present, incorrect version: `✗ Non-breaking changes detected — expected <expected>, not <new>.`
