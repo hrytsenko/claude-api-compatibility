@@ -65,13 +65,7 @@ Keep each bullet to one line: name the operation or field, describe what changed
 
 Extract `info.version` from both the old and new spec. Treat it as a `major.minor` string (e.g. `1.0`, `2.3`).
 
-Determine the **required** bump based on Step 5:
-
-| Changes detected       | Required bump                                  |
-|------------------------|------------------------------------------------|
-| None                   | No change                                      |
-| Non-breaking only      | Minor incremented, major unchanged             |
-| Any breaking           | Major incremented, minor reset to 0            |
+Determine the **required** bump using the versioning rules from the policy read in Step 1.
 
 Compare the actual version change to the required one and append a **Version verdict** section:
 

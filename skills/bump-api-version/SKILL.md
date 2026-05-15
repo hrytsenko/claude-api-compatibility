@@ -14,13 +14,7 @@ Run `/api-versioning:check-api-compatibility $ARGUMENTS` and capture the result.
 
 ### Step 2 — Choose bump
 
-Based on the check result:
-
-| Changes detected  | Action                                |
-|-------------------|---------------------------------------|
-| Any breaking      | Increment major and reset minor to 0. |
-| Non-breaking only | Increment minor.                      |
-| None              | Don't change version.                 |
+Based on the check result, apply the versioning rules from the API versioning policy.
 
 ### Step 3 — Apply bump
 

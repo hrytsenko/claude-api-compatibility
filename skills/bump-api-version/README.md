@@ -10,13 +10,11 @@ The skill uses the `major.minor` format for `info.version`.
 /api-versioning:bump-api-version <spec-file>
 ```
 
-## Behavior
+## Policy
 
-| Changes detected  | Action                                                    |
-|-------------------|-----------------------------------------------------------|
-| Any breaking      | Increment major and reset minor to 0, e.g. `1.2` → `2.0`. |
-| Non-breaking only | Increment minor, e.g. `1.2` → `1.3`.                      |
-| None              | Do nothing.                                               |
+Versioning rules are defined in `resources/API_VERSIONING.md`.
+
+To override them for a specific project, place an `API_VERSIONING.md` file in the project root.
 
 ## Dependencies
 

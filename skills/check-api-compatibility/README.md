@@ -16,6 +16,6 @@ This skill detects changes in the API specification, reports breaking and non-br
 
 ## Policy
 
-The skill ships with a default policy at `resources/API_VERSIONING.md`.
+Compatibility and versioning rules are defined in `resources/API_VERSIONING.md`.
 
-To override it for a specific project, place an `API_VERSIONING.md` file in the project root. The skill will use that file instead of the bundled default, leaving the skill itself unchanged.
+To override them for a specific project, place an `API_VERSIONING.md` file in the project root.

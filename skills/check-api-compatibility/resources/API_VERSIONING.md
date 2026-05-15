@@ -22,3 +22,11 @@ A breaking change requires a major version bump. A non-breaking change may be re
 - Add a response header or field.
 - Extend the value space of a parameter, header, or field (e.g. increasing `maximum`, adding an `enum` value).
 - Add a new success response status code alongside the existing one.
+
+## Versioning rules
+
+| Changes detected  | Action                                                    |
+|-------------------|-----------------------------------------------------------|
+| Any breaking      | Increment major and reset minor to 0, e.g. `1.2` → `2.0`. |
+| Non-breaking only | Increment minor, e.g. `1.2` → `1.3`.                      |
+| None              | Do nothing.                                               |
