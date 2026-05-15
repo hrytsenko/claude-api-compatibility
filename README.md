@@ -1,28 +1,15 @@
-# claude-api-compatibility
+# claude-api-versioning
 
-A Claude Code plugin that checks OpenAPI specification backward compatibility and verifies the version bump.
+A Claude Code plugin to enforce the API versioning policy for compatibility checks and version bumps.
+
+## Skills
+
+- [check-api-compatibility](skills/check-api-compatibility/README.md) — check API compatibility and verify the version bump.
+- [bump-api-version](skills/bump-api-version/README.md) — bump the API specification version according to detected API changes.
 
 ## Installation
 
 ```
-/plugin marketplace add hrytsenko/claude-api-compatibility
-/plugin install api-compatibility
+/plugin marketplace add hrytsenko/claude-api-versioning
+/plugin install api-versioning
 ```
-
-## Usage
-
-```
-/api-compatibility:check <spec-file>
-```
-
-Compares the current spec file against its previously committed version and reports:
-
-- **Breaking changes** — removals, renames, type changes, narrowed value spaces.
-- **Non-breaking changes** — additions, optional parameters, extended value spaces.
-- **Version verdict** — whether `info.version` was bumped correctly per the changes detected.
-
-## Compatibility policy
-
-The plugin ships with a default policy at `skills/check/resources/API_VERSIONING.md`.
-
-To override it for a specific project, place an `API_VERSIONING.md` file in the project root. The skill will use that file instead of the bundled default.

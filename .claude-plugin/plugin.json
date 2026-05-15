@@ -1,11 +1,11 @@
 {
-  "name": "api-compatibility",
-  "description": "Check an OpenAPI specification for backward compatibility and verify the version bump.",
+  "name": "api-versioning",
+  "description": "Enforce the API versioning policy for compatibility checks and version bumps.",
   "version": "1.0.0",
   "author": {
     "name": "Anton Hrytsenko"
   },
-  "homepage": "https://github.com/hrytsenko/claude-api-compatibility",
-  "repository": "https://github.com/hrytsenko/claude-api-compatibility",
+  "homepage": "https://github.com/hrytsenko/claude-api-versioning",
+  "repository": "https://github.com/hrytsenko/claude-api-versioning",
   "license": "MIT"
 }

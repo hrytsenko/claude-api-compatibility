@@ -1,15 +1,15 @@
 {
-  "name": "claude-api-compatibility",
+  "name": "claude-api-versioning",
   "owner": {
     "name": "Anton Hrytsenko"
   },
   "plugins": [
     {
-      "name": "api-compatibility",
-      "description": "Check an OpenAPI specification for backward compatibility and verify the version bump.",
+      "name": "api-versioning",
+      "description": "Enforce the API versioning policy for compatibility checks and version bumps.",
       "source": {
         "source": "url",
-        "url": "https://github.com/hrytsenko/claude-api-compatibility.git"
+        "url": "https://github.com/hrytsenko/claude-api-versioning.git"
       }
     }
   ]

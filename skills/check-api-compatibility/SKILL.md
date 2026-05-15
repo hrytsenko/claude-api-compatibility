@@ -1,6 +1,6 @@
 ---
-name: check
-description: Check an OpenAPI specification for backward compatibility and verify the version bump.
+name: check-api-compatibility
+description: Check API compatibility and verify the version bump.
 argument-hint: <spec-file>
 ---
 
@@ -10,13 +10,14 @@ You are performing a structured API backward-compatibility review based on the p
 
 ### Step 1 — Read policy
 
-Check whether `API_VERSIONING.md` exists in the project root. If it does, use it as the policy. Otherwise fall back to `resources/API_VERSIONING.md` bundled with this skill. This is your authoritative definition of what constitutes a breaking vs. non-breaking change. Keep it in mind throughout.
+Check whether `API_VERSIONING.md` exists in the project root. If it does, use it as the policy. Otherwise fall back to `resources/API_VERSIONING.md` bundled with this skill.
+This is your authoritative definition of what constitutes a breaking vs. non-breaking change. Keep it in mind throughout.
 
 ### Step 2 — Find current specification
 
 The spec path is provided in `$ARGUMENTS`. Trim any surrounding whitespace. If the argument is empty or missing, ask the user to supply the path and stop.
 
-Confirm the file exists. Confirm the file is in OpenAPI format. If it does not, tell the user and stop.
+Confirm the file exists. Confirm the file is in the OpenAPI format. If it does not, tell the user and stop.
 
 ### Step 3 — Obtain previous version
 
