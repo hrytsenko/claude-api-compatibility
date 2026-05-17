@@ -1,7 +1,7 @@
 ---
 name: check-api-compatibility
 description: Check API compatibility and verify the version bump.
-argument-hint: <spec-file>
+argument-hint: <mode> <spec-file>
 ---
 
 ## Instructions
@@ -13,31 +13,36 @@ You are performing a structured API backward-compatibility review based on the p
 Check whether `API_VERSIONING.md` exists in the project root. If it does, use it as the policy. Otherwise fall back to `resources/API_VERSIONING.md` bundled with this skill.
 This is your authoritative definition of what constitutes a breaking vs. non-breaking change. Keep it in mind throughout.
 
-### Step 2 — Find current specification
+### Step 2 — Determine specifications
 
-The spec path is provided in `$ARGUMENTS`. Trim any surrounding whitespace. If the argument is empty or missing, ask the user to supply the path and stop.
+Parse `$ARGUMENTS` as `<mode> <args...>`. If the mode is missing or not one of the values below, tell the user the valid modes and stop.
 
-Confirm the file exists. Confirm the file is in the OpenAPI format. If it does not, tell the user and stop.
+**`head <spec>`** — previous version from the repository, current version from disk. Use this before committing changes.
 
-### Step 3 — Obtain previous version
+1. Confirm `<spec>` exists on disk and is in OpenAPI format. If not, tell the user and stop.
+2. **Previous version:** run `git show HEAD:"<spec>"`. If it fails, tell the user "No committed version found for `<spec>`." and stop.
+3. **Current version:** read `<spec>` from disk.
 
-**Previous version (committed):** run:
+**`log <spec>`** — both versions from the repository. Use this to verify a committed version bump, e.g. in a CI/CD pipeline.
 
-```bash
-git show HEAD:"$ARGUMENTS"
-```
+1. Run `git log --follow -n 2 --format="%H" -- "<spec>"`. If no output, tell the user "No committed version found for `<spec>`." and stop. If only one commit, tell the user "Only one committed version found for `<spec>` — no previous version to compare against." and stop.
+2. Let `<latest>` be the first hash and `<previous>` be the second hash.
+3. **Previous version:** run `git show <previous>:"<spec>"`.
+4. **Current version:** run `git show <latest>:"<spec>"`.
 
-If the command fails because the path has no committed version, tell the user "No previous committed version found for `<path>` — nothing to compare against." and stop.
+**`diff <old-spec> <new-spec>`** — both versions from disk. Use this to compare two local files directly.
 
-**Current version:** read the file at `$ARGUMENTS` from disk.
+1. Confirm both files exist and are in OpenAPI format. If not, tell the user and stop.
+2. **Previous version:** read `<old-spec>` from disk.
+3. **Current version:** read `<new-spec>` from disk.
 
-### Step 4 — Compare specifications
+### Step 3 — Compare specifications
 
 Carefully compare the two spec versions yourself. Identify every difference: added, removed, renamed, or changed operations, parameters, request fields, response fields, headers, data types, and value constraints.
 
 Do not count changes to `info.version` as a functional API change.
 
-### Step 5 — Classify changes
+### Step 4 — Compatibility verdict
 
 Using the policy from Step 1, classify each difference as **breaking** or **non-breaking** and append a **Compatibility verdict** section:
 
@@ -61,7 +66,7 @@ No changes detected.
 
 Keep each bullet to one line: name the operation or field, describe what changed, and include the line number in the current spec where the change appears — e.g. `GET /books: added optional isbn query parameter (line 42)`. Be concise and human-readable.
 
-### Step 6 — Check version
+### Step 5 — Version verdict
 
 Extract `info.version` from both the old and new spec. Treat it as a `major.minor` string (e.g. `1.0`, `2.3`).
 

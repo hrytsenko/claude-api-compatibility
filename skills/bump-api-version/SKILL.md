@@ -10,7 +10,7 @@ You are performing an automated API version bump. Follow every step below in ord
 
 ### Step 1 — Detect changes
 
-Run `/api-versioning:check-api-compatibility $ARGUMENTS` and capture the result.
+Run `/api-versioning:check-api-compatibility head $ARGUMENTS` and capture the result.
 
 ### Step 2 — Choose bump
 

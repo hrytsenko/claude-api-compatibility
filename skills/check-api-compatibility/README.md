@@ -5,13 +5,18 @@ This skill detects changes in the API specification, reports breaking and non-br
 ## Usage
 
 ```
-/api-versioning:check-api-compatibility <spec-file>
+/api-versioning:check-api-compatibility <mode> <spec-file>
 ```
+
+## Modes
+
+- **`head <spec>`** — previous version from the repository, current version from disk. Use this before committing changes.
+- **`log <spec>`** — both versions from the repository. Use this to verify a committed version bump.
+- **`diff <old-spec> <new-spec>`** — both versions from disk. Use this to compare two local files directly.
 
 ## Output
 
-- **Breaking changes** — removals, renames, type changes, narrowed value spaces.
-- **Non-breaking changes** — additions, optional parameters, extended value spaces.
+- **Compatibility verdict** — breaking and non-breaking changes between the two versions.
 - **Version verdict** — whether `info.version` is consistent with the detected changes.
 
 ## Policy
